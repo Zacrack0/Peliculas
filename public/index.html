@@ -6,8 +6,8 @@
   <title>Películas | Usuario</title>
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css"/>
   <style>
-    body {
-      background-color: #2f2f54;
+  body {
+      background-color: #393964;
       color: #fff;
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -16,33 +16,60 @@
     header {
       text-align: center;
       padding: 2rem 1rem 1rem;
-      border-bottom: 1px solid #101010;
+      border-bottom: 1px solid #ffffff;
     }
 
     header h1 {
       margin-bottom: 1px;
+      color: #fff;
+      font-family: 'Paradise Signature';
+      font-size: 2.5rem;
     }
-
 
     nav {
-      margin-top: 1px;
+      margin-top: 1rem;
     }
 
-    nav a {
-      color: #ededed;
-      margin: 1px;
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 100px;
     }
 
-    .search-bar {
-      margin: auto ;
-      max-width: 300px;
+    .nav-button {
+      background-color: #525277;
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .nav-button:hover {
+      background-color: #83839e;
+      transform: scale(1.05);
     }
 
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: 1fr;
       gap: 2rem;
       padding: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     .movie-card {
@@ -50,13 +77,9 @@
       border-radius: 12px;
       overflow: hidden;
       transition: transform 0.2s, box-shadow 0.2s;
-      display: flow-root;
+      display: flex;
       flex-direction: row;
-      justify-content: flex-start;
-      flex-wrap: nowrap;
-      align-content: center;
       align-items: flex-start;
-      
     }
 
     .movie-card:hover {
@@ -95,17 +118,23 @@
       margin-top: auto;
     }
 
-  .grid-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  padding: 1rem;
+    .search-input {
+  margin: 2rem 10px;
+  max-width: 200px;
+  background-color: #ceced8;
+  padding: 0.5rem 1.2px;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  width: 100%;
+  color: #000;
+  outline: none;
 }
 
-@media (min-width: 768px) {
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.search-input::placeholder {
+  color: #555;
 }
 
   </style>
@@ -113,17 +142,17 @@
 <body>
   <header>
     <h1> Bienvenido a CinePlus</h1>
-    <nav>
-      <a href="login.html">Ingresar</a>
-      <a href="register.html">Registrarse</a>
+    <nav class="nav-buttons">
+      <a href="register.html" class="nav-button">Registrarse</a>
+      <a href="login.html" class="nav-button">Ingresar</a>
     </nav>
   </header>
 
-  <main class="container">
-    <input type="search" id="search" class="search-bar" placeholder="Buscar película...">
+   <div class="search-bar">
+     <input type="text" placeholder="Buscar películas..." class="search-input">
+  </div>
 
-    <div class="grid-container" id="moviesContainer"></div>
-  </main>
+  <main class="grid-container">
 
   <script>
 
